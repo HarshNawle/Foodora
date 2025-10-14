@@ -1,14 +1,11 @@
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { userLoginSchema, type LoginInputState } from '@/schema/userSchema';
 import { Separator } from '@radix-ui/react-separator';
 import { Loader2, LockKeyhole, Mail } from 'lucide-react'
 import { useState, type ChangeEvent, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 
-type LoginInputState = {
-    email: string;
-    password: string;
-}
 
 const Login = () => {
 
@@ -17,6 +14,8 @@ const Login = () => {
         password: '',
     });
 
+    const [errors,setErrors] = useState<Partial<LoginInputState>>({});
+
     const changeEventHandler = (e:ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setInput({...input, [name]: value});
@@ -24,6 +23,13 @@ const Login = () => {
 
     const loginSubmit = (e:FormEvent) => {
         e.preventDefault();
+        //form validation check
+        const result = userLoginSchema.safeParse(input);
+        if(!result.success){
+            const fieldErrors = result.error.flatten().fieldErrors;
+            setErrors(fieldErrors as Partial<LoginInputState>);
+            return;
+        }
         console.log(input);
     }
 
@@ -38,19 +44,21 @@ const Login = () => {
                     <Input type='email' placeholder='Email' className='pl-11 focus-visible:ring-2' 
                     value={input.email} onChange={changeEventHandler} name='email'/>
                     <Mail className='absolute inset-y-0 top-1.5 left-2 text-gray-500' />
+                    { errors && <span className='text-sm text-red-500'>{errors.email}</span> }
                 </div>
                 <div className='relative'>
                     <Input type='password' placeholder='Password' className='pl-11 focus-visible:ring-2' 
                     value={input.password} onChange={changeEventHandler} name='password'/>
                     <LockKeyhole className='absolute inset-y-0 top-1.5 left-2 text-gray-500' />
+                    { errors && <span className='text-sm text-red-500'>{errors.password}</span> }
                 </div>
 
                 <div className='mt-8'>
                     {
                         loader ? (
-                            <Button className='w-full'><Loader2 className='mr-2 h-4 w-4 animate-spin'/> Please wait</Button>
+                            <Button disabled className='w-full'><Loader2 className='mr-2 h-4 w-4 animate-spin'/> Please wait</Button>
                         )
-                        :(<Button className='w-full'>Login</Button>)
+                        :(<Button type="submit" className='w-full'>Login</Button>)
                     }
                     
                 </div>
