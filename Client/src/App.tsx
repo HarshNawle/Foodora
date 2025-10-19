@@ -1,18 +1,25 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './App.css'
 import Login from './auth/Login'
-import MainLayout from './MainLayout'
+import MainLayout from './Layout/MainLayout'
 import Signup from './auth/Signup'
 import ForgotPassword from './auth/ForgotPassword'
 import ResetPassword from './auth/ResetPassword'
 import VerifyEmail from './auth/VerifyEmail'
+import HeroSection from './components/HeroSection'
 
 function App() {
 
   const appRouter = createBrowserRouter([
     {
       path: '/',
-      element: <MainLayout/>
+      element: <MainLayout/>,
+      children:[
+        {
+          path:'/',
+          element: <HeroSection/>
+        }
+      ]
     },
     {
       path: '/login',
@@ -33,7 +40,8 @@ function App() {
     {
       path: '/verify-email',
       element: <VerifyEmail/>
-    }
+    },
+    
   ])
 
   return (
