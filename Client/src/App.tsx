@@ -7,6 +7,8 @@ import ForgotPassword from './auth/ForgotPassword'
 import ResetPassword from './auth/ResetPassword'
 import VerifyEmail from './auth/VerifyEmail'
 import HeroSection from './components/HeroSection'
+import Profile from './components/Profile'
+import SearchPage from './components/SearchPage'
 
 function App() {
 
@@ -16,9 +18,19 @@ function App() {
       element: <MainLayout/>,
       children:[
         {
+          path:'/profile',
+          element: <Profile/>
+        },
+        
+        {
           path:'/',
           element: <HeroSection/>
-        }
+        },
+        {
+          path:'/search/:query',
+          element: <SearchPage/>
+        },
+
       ]
     },
     {
