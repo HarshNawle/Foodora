@@ -9,6 +9,7 @@ import VerifyEmail from './auth/VerifyEmail'
 import HeroSection from './components/HeroSection'
 import Profile from './components/Profile'
 import SearchPage from './components/SearchPage'
+import RestaurantDetail from './components/RestaurantDetail'
 
 function App() {
 
@@ -29,6 +30,10 @@ function App() {
         {
           path:'/search/:query',
           element: <SearchPage/>
+        },
+        {
+          path:'/restaurant/:id',
+          element: <RestaurantDetail/>
         },
 
       ]
