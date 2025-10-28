@@ -9,7 +9,7 @@ const AvailableMenu = () => {
         Available Menus
       </h1>
       <div className="grid md:grid-cols-3 space-y-4 md:space-y-0">
-        <Card className="-p-0 max-w-xs mx-auto shadow-lg rounded-lg overflow-hidden">
+        <Card className=" -p-0 max-w-[75%] mx-auto shadow-lg rounded-lg overflow-hidden">
           <img
             src={menuimg}
             alt="menu-1"
@@ -28,7 +28,7 @@ const AvailableMenu = () => {
             </h3>
           </CardContent>
           <CardFooter className="p-4">
-            <Button className="w-full cursor-pointer">Add to Cart</Button>
+            <Button className="w-full cursor-pointer -mt-8">Add to Cart</Button>
           </CardFooter> 
         </Card>
       </div>
