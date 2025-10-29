@@ -11,8 +11,8 @@ import Profile from "./components/Profile";
 import SearchPage from "./components/SearchPage";
 import RestaurantDetail from "./components/RestaurantDetail";
 import Cart from "./components/Cart";
-import AdminRestaurant from "./admin/adminRestaurant";
-
+import AdminRestaurant from "./admin/AdminRestaurant";
+import AddMenu from "./admin/AddMenu";
 
 function App() {
   const appRouter = createBrowserRouter([
@@ -42,10 +42,14 @@ function App() {
           element: <Cart />,
         },
         //ADMIN service from here
-                {
-                  path: "/admin/restaurant",
-                  element: <AdminRestaurant />,
-                },
+        {
+          path: "/admin/restaurant",
+          element: <AdminRestaurant />,
+        },
+        {
+          path: "/admin/add-menu",
+          element: <AddMenu />,
+        },
       ],
     },
     {
