@@ -23,7 +23,7 @@ const AdminRestaurant = () => {
 
   const changeEventHandler = (e:React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type } = e.target;
-    setInput({...input, [name]: type== 'number' ? Number(value) : value});
+    setInput({...input, [name]: type == 'number' ? Number(value) : value});
   };
 
   const submitHandler = (e:React.FormEvent<HTMLFormElement>) => {
@@ -110,7 +110,7 @@ const AdminRestaurant = () => {
                   accept="image/*"
                   type="file"
                   name="imageFile"
-                  onChange={(e) => setInput({...input, imageFile: e.target.files?.[0]})}
+                  onChange={(e) => setInput({...input, imageFile: e.target.files?.[0] || undefined})}
                 /> {error && <span className="text-red-500 text-xs font-medium">
                   {error.imageFile?.name || "* Image file is required"}</span>}
               </div>
