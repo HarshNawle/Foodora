@@ -13,6 +13,8 @@ import RestaurantDetail from "./components/RestaurantDetail";
 import Cart from "./components/Cart";
 import AdminRestaurant from "./admin/AdminRestaurant";
 import AddMenu from "./admin/AddMenu";
+import Order from "./admin/Order";
+import SuccessPage from "./components/SuccessPage";
 
 function App() {
   const appRouter = createBrowserRouter([
@@ -41,6 +43,10 @@ function App() {
           path: "/cart",
           element: <Cart />,
         },
+        {
+          path: "/order/status",
+          element: <SuccessPage />,
+        },
         //ADMIN service from here
         {
           path: "/admin/restaurant",
@@ -49,6 +55,10 @@ function App() {
         {
           path: "/admin/add-menu",
           element: <AddMenu />,
+        },
+        {
+          path: "/admin/reataurant-orders",
+          element: <Order />,
         },
       ],
     },
