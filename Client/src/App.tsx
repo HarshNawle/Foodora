@@ -57,7 +57,7 @@ function App() {
           element: <AddMenu />,
         },
         {
-          path: "/admin/reataurant-orders",
+          path: "/admin/restaurant-orders",
           element: <Order />,
         },
       ],
