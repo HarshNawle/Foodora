@@ -5,7 +5,7 @@ import crypto from "crypto";
 import cloudinary from "../utils/cloudinary";
 import { generateToken } from "../utils/generateJWTtoken";
 import { generateVerificationToken } from "../utils/generateVerificationToken";
-import { sendPasswordResetEmail, sendResetSuccessEmail, sendVerificationEmail, sendWelcomeEmail } from "../MailTrap/Email";
+import { sendPasswordResetEmail, sendResetSuccessEmail, sendVerificationEmail, sendWelcomeEmail } from "../mailTrap/Email";
 
 //Signup Backend
 export const signup = async (req: Request, res: Response) => {

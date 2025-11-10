@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { Restaurant } from "../models/restaurant_model";
-import  Multer  from "multer";
+import uploadImageOnCloudinary from "../utils/imageUpload";
 
 export const createRestaurant = async (req:Request, res:Response) => {
     try {
@@ -25,6 +25,20 @@ export const createRestaurant = async (req:Request, res:Response) => {
         }
 
         const imageURL = await uploadImageOnCloudinary(file as Express.Multer.File);
+        await Restaurant.create({
+            user:req.id,
+            restaurantName,
+            city,
+            country,
+            deliveryTime,
+            price,
+            cuisines:JSON.parse(cuisines),
+            imageURL,
+        });
+        return res.status(200).json({
+            success: true,
+            message: "Restaurant Added"
+        })
 
     } catch (error) {
         console.log(error);
