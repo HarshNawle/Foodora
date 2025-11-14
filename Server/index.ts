@@ -2,9 +2,11 @@ import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./DB/connectDB";
 import cors from "cors";
-import userRoute from "./routes/user_routes";
 import bodyParser from "body-parser";
 import cookieParser = require("cookie-parser");
+import userRoute from "./routes/user_routes";
+import restaurantRoute from "./routes/restaurant_routes";
+import menuRoute from "./routes/menu_routes";
 
 dotenv.config();
 
@@ -24,6 +26,8 @@ app.use(cors(corsOption));
 
 //API endpoints
 app.use("/api/v1/user", userRoute);
+app.use("/api/v1/restaurant", restaurantRoute);
+app.use("/api/v1/menu", menuRoute);
 
 
 // Connect to MongoDB and start server
